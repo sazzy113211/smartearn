@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Earn Login</title>
+  <style>
+    *{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+    body{margin:0;height:100vh;background:#000}
+    .header{
+      display:flex;
+      align-items:center;
+      padding:12px 15px;
+      border-bottom:2px solid #ffd400 /* Changed to match theme */
+    }
+    .header img{
+      width:42px;
+      height:42px;
+      border-radius:8px
+    }
+    .header span{
+      color:#fff;
+      font-size:16px;
+      margin-left:10px;
+      font-weight:bold
+    }
+    .container{
+      min-height:calc(100vh - 70px);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding: 20px 0;
+    }
+    .login-card{
+      width:90%;
+      max-width:360px;
+      background:#1c1c1c;
+      border-radius:18px;
+      padding:25px 20px
+    }
+    .login-card h2{
+      text-align:center;
+      color:#ffd400;
+      margin-bottom:20px;
+      font-size:24px
+    }
+    .input-box{margin-bottom:15px}
+    .input-box input, .input-box select{
+      width:100%;
+      padding:14px;
+      border-radius:12px;
+      border:none;
+      outline:none;
+      background:#2b2b2b;
+      color:#fff;
+      font-size:15px
+    }
+    .input-box input::placeholder{color:#aaa}
+    
+    /* Styling for the dropdown arrow */
+    select { appearance: none; cursor: pointer; }
+
+    .login-btn button{
+      width:100%;
+      padding:15px;
+      background:#ffd400;
+      border:none;
+      border-radius:14px;
+      font-size:16px;
+      font-weight:bold;
+      color:#000;
+      cursor:pointer;
+      position:relative;
+    }
+    .login-btn button:disabled{
+      background:#555;
+      color:#888;
+      cursor:default;
+    }
+
+    /* Success Message styling */
+    #successMsg {
+      display: none;
+      color: #00ff00;
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .spinner{
+      display:inline-block;
+      width:18px;
+      height:18px;
+      border:3px solid rgba(0,0,0,.3);
+      border-radius:50%;
+      border-top-color:#000;
+      animation:spin .8s linear infinite;
+      margin-left:8px;
+      vertical-align:middle;
+    }
+    @keyframes spin{
+      to{transform:rotate(360deg)}
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="images/file_00000000361871f4a4bd5a989713c41b.png" alt="Smart Earn Logo">
+    <span>Smart earn</span>
+  </div>
+  <div class="container">
+    <div class="login-card">
+      <h2>Welcome Back</h2>
+      
+      <div class="input-box">
+        <input type="text" id="userName" placeholder="Enter Your Name" required>
+      </div>
+      <div class="input-box">
+        <input type="email" id="userEmail" placeholder="Enter Your Gmail" required>
+      </div>
+      <div class="input-box">
+        <input type="tel" id="userPhone" placeholder="Phone Number" required>
+      </div>
+      <div class="input-box">
+        <input type="text" id="userRegion" placeholder="Region (Country)" required>
+      </div>
+      <div class="input-box">
+        <select id="userSex" required>
+            <option value="" disabled selected>Select Sex</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="input-box">
+        <input type="text" id="userState" placeholder="State of Origin" required>
+      </div>
+
+      <div class="login-btn">
+        <button id="loginBtn">LOGIN NOW</button>
+      </div>
+
+      <div id="successMsg">
+        Logging in... 😊
+      </div>
+    </div>
+  </div>
+
+<script>
+  const btn = document.getElementById('loginBtn');
+  const successMsg = document.getElementById('successMsg');
+  
+  // Input References
+  const nameInput = document.getElementById('userName');
+  const emailInput = document.getElementById('userEmail');
+  const phoneInput = document.getElementById('userPhone');
+  const regionInput = document.getElementById('userRegion');
+  const sexInput = document.getElementById('userSex');
+  const stateInput = document.getElementById('userState');
+
+  btn.addEventListener('click', () => {
+    // Basic validation to ensure all fields are filled
+    if(nameInput.value && emailInput.value && phoneInput.value && regionInput.value && sexInput.value && stateInput.value){
+      
+      // Disable button and show spinner
+      btn.disabled = true;
+      btn.innerHTML = 'Loading <span class="spinner"></span>';
+      
+      // Show green smiling face message
+      successMsg.style.display = 'block';
+
+      // Save user data
+      localStorage.setItem('smartEarnUser', nameInput.value.trim());
+      localStorage.setItem('smartEarnPhone', phoneInput.value.trim());
+
+      // Redirect after delay
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 2500); // Increased delay slightly to make the green message visible
+    } else {
+      alert("Please fill in all fields!");
+    }
+  });
+</script>
+
+</body>
+</html>

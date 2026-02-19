@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Failed</title>
+
+<style>
+    body{
+        margin:0;
+        font-family: Arial, sans-serif;
+        background:#f5f5f5;
+    }
+
+    /* Top bar */
+    .top-bar{
+        background:#111;
+        padding:12px;
+        color:white;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+    }
+
+    .app-name{
+        font-weight:bold;
+        font-size:16px;
+    }
+
+    /* Success header */
+    .success-header{
+        background:#d4b200;
+        color:black;
+        text-align:center;
+        padding:15px;
+        font-size:20px;
+        font-weight:bold;
+    }
+
+    /* Card */
+    .card{
+        margin:40px 20px;
+        background:black;
+        color:#ffd700;
+        border-radius:15px;
+        padding:30px 20px;
+        text-align:center;
+        box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .card h2{
+        margin-top:0;
+        margin-bottom:20px;
+        font-size:22px;
+    }
+
+    .card p{
+        font-size:16px;
+        line-height:1.6;
+        margin:0;
+    }
+
+    /* Button */
+    .btn{
+        display:block;
+        width:80%;
+        margin:30px auto;
+        padding:15px;
+        background:#d4b200;
+        color:black;
+        text-align:center;
+        font-weight:bold;
+        border-radius:8px;
+        text-decoration:none;
+        font-size:16px;
+    }
+
+    .btn:active{
+        opacity:0.8;
+    }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="app-name">Smart earn</div>
+    <div>🔔</div>
+</div>
+
+<div class="failed-header">
+    Failed
+</div>
+
+<div class="card">
+    <h2>Account Connection Failed!</h2>
+    <p>
+        It seems like no payment for account activation was confirmed, if this goes on please do contact our help center.<br>
+        smartearnhelp@gmail.com.
+    </p>
+</div>
+
+<a href="payment.html" class="btn">RE-TRY PAYMENT CONNECTION</a>
+
+
+</body></html>
